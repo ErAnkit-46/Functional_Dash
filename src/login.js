@@ -38,6 +38,9 @@ function Login() {
     if (showTooltip && errorField === 'password') {
       const passwordValidationMessage = validatePassword(event.target.value);
       setErrorMessage(passwordValidationMessage);
+      if (!passwordValidationMessage) {
+        setShowTooltip(false);
+      }
     }
   };
 
@@ -109,8 +112,8 @@ function Login() {
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
-        <h2>Login</h2>
         <div className="form-group" style={{ position: 'relative' }}>
+          <h2>Login</h2>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
