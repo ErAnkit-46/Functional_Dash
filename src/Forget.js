@@ -1,137 +1,74 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+// import './Forget.css';
 
-const ForgetPasswordContainer = styled.div`
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 130px;
-  backdrop-filter: blur(5px);
-`;
-
-const FormHeading = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-const EmailGroup = styled.div`
-  margin-bottom: 20px;
-`;
-
-const EmailLabel = styled.label`
-  display: block;
-  margin-bottom: 10px;
-`;
-
-const EmailInput = styled.input`
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const PasswordGroup = styled.div`
-  margin-bottom: 20px;
-`;
-
-const PasswordLabel = styled.label`
-  display: block;
-  margin-bottom: 10px;
-`;
-
-const PasswordInput = styled.input`
-  width: 95%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const ConfirmPasswordGroup = styled.div`
-  margin-bottom: 20px;
-`;
-
-const ConfirmPasswordLabel = styled.label`
-  display: block;
-  margin-bottom: 10px;
-`;
-
-const ConfirmPasswordInput = styled.input`
-  width: 95%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const FormButton = styled.button`
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-const ForgetPasswordForm = () => {
+function Forget() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform forget password logic here (e.g., send email to reset password)
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle login logic here
     console.log('Email:', email);
     console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+    navigate('/');
+    // window.location.href = 'http://192.168.56.1:3001';
   };
 
   return (
-    <ForgetPasswordContainer>
+    <div className="login-container">
       <form onSubmit={handleSubmit}>
-        <FormHeading>Forget Password</FormHeading>
-        <EmailGroup>
-          <EmailLabel htmlFor="email">Email:</EmailLabel>
-          <EmailInput
+        <h2>Change password</h2>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
             type="email"
             id="email"
-            placeholder="Enter email address"
+            placeholder='Enter email address'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            onChange={handleEmailChange}
+            // required
           />
-        </EmailGroup>
-        <PasswordGroup>
-          <PasswordLabel htmlFor="password">New Password:</PasswordLabel>
-          <PasswordInput
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
             type="password"
             id="password"
-            placeholder="Password"
+            placeholder='Enter new password'  
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            onChange={handlePasswordChange}
+            // required
           />
-        </PasswordGroup>
-        <ConfirmPasswordGroup>
-          <ConfirmPasswordLabel htmlFor="confirmPassword">Confirm New Password:</ConfirmPasswordLabel>
-          <ConfirmPasswordInput
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Confirm New Password:</label>
+          <input
             type="password"
-            id="confirmPassword"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
+            id="password"
+            placeholder='Re-enter new password'  
+            value={password}
+            onChange={handlePasswordChange}
+            // required
           />
-        </ConfirmPasswordGroup>
-        <FormButton type="submit">Reset Password</FormButton>
-      </form>
-    </ForgetPasswordContainer>
-  );
-};
+        </div>
 
-export default ForgetPasswordForm;
+        
+        <button type="submit"><a href="/"></a>Update</button>
+       
+      </form>
+    </div>
+  );
+}
+
+
+export default Forget;
