@@ -118,20 +118,27 @@ function Login() {
           <input
             type="email"
             id="email"
-            placeholder="Enter email address"
+            placeholder='Enter email address'
             value={email}
             onChange={handleEmailChange}
             required
           />
+          {showTooltip && errorField === 'email' && (
+            <div style={{ ...tooltipStyle, left: '105%', top: '50%' }}>
+              {errorMessage}
+            </div>
+          )}
         </div>
 
         <div className="form-group" style={{ position: 'relative' }}>
           <label htmlFor="password">Password:</label>
           <input
             type={showPassword ? 'text' : 'password'}
+            id="password"
+            placeholder='Enter password'
             value={password}
             onChange={handlePasswordChange}
-            placeholder="Enter your password"
+            required
             style={{
               padding: '10px',
               width: '330px',
@@ -158,18 +165,18 @@ function Login() {
           )}
         </div>
 
-        <div className="flex">
-          <div className="check">
+        <div className='flex'>
+          <div className='check'>
             <div><input type="checkbox" /></div>
             <label htmlFor="rememberMe">Remember me</label>
           </div>
           <div>
-            <a href="/forget" className="green">Forgot password?</a>
+            <a href="/forget" className='green'>Forgot password?</a>
           </div>
         </div>
 
         <button type="submit">Log In</button>
-        <p className="color">Don't have an account? <a className="green" href="/register">Register</a></p>
+        <p className='color'>Don't have an account? <a className='green' href="/register">Register</a></p>
       </form>
     </div>
   );
