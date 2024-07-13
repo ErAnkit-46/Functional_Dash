@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './login.css';
 
 function Login() {
@@ -76,6 +78,7 @@ function Login() {
     }
     return "";
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailValidationMessage = validateEmail(email);
@@ -105,7 +108,7 @@ function Login() {
     color: '#333',
     zIndex: 1,
   };
-  
+
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
@@ -115,7 +118,7 @@ function Login() {
           <input
             type="email"
             id="email"
-            placeholder='Enter email address'
+            placeholder="Enter email address"
             value={email}
             onChange={handleEmailChange}
             required
@@ -132,7 +135,7 @@ function Login() {
           <input
             type={showPassword ? 'text' : 'password'}
             id="password"
-            placeholder='Enter password'
+            placeholder="Enter password"
             value={password}
             onChange={handlePasswordChange}
             required
@@ -160,39 +163,20 @@ function Login() {
               {errorMessage}
             </div>
           )}
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            placeholder='Enter password'  
-            value={password}
-            onChange={handlePasswordChange}
-            // required
-          />
         </div>
 
-        <div className='flex'>
-          <div className='check'>
-            <div><input type="checkbox" /></div>
+        <div className="flex">
+          <div className="check">
+            <input type="checkbox" id="rememberMe" />
             <label htmlFor="rememberMe">Remember me</label>
           </div>
           <div>
-            <a href="/forget" className='green'>Forgot password?</a>
+            <a href="/forget" className="green">Forgot password?</a>
           </div>
         </div>
 
         <button type="submit">Log In</button>
-          <div><input type="checkbox" /></div>
-          <label htmlFor="rememberMe">Remember me </label>
-          </div>
-          <div>
-          <a href="/forget" className='green'>Forgot password?</a>
-          </div>
-        </div>
-
-        <button type="submit"><a href="/dash"></a>Log In</button>
-        <p className='color'>Don't have an account? <a className='green' href="/register">Register</a></p>
+        <p className="color">Don't have an account? <a className="green" href="/register">Register</a></p>
       </form>
     </div>
   );
