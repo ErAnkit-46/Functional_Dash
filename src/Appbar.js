@@ -326,7 +326,7 @@ export default function MiniDrawer() {
             onClick={open ? handleDrawerClose : handleDrawerOpen}
             sx={{ mb: '25px' }}
           >
-            {open ? <ChevronLeftIcon /> : <MenuIcon />}
+            {open ? <ChevronLeftIcon sx={{ml:'-12px'}}/> : <MenuIcon sx={{ml:'-12px'}}/>}
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ mb: '25px', ml: '15px' }}>
             My Application

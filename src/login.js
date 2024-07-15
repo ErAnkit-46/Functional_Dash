@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +11,7 @@ function Login() {
   const [showTooltip, setShowTooltip] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorField, setErrorField] = useState('');
+  const passwordInputRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +47,9 @@ function Login() {
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+    if (passwordInputRef.current) {
+      passwordInputRef.current.focus();
+    }
   };
 
   const validateEmail = (email) => {
@@ -99,14 +103,12 @@ function Login() {
     position: 'absolute',
     marginTop: '-15px',
     padding: '10px',
-    width: '220px',
     backgroundColor: '#EFDBA1',
     border: '1px solid #ccc',
     borderRadius: '5px',
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     fontSize: '12px',
     color: '#333',
-    zIndex: 1,
   };
 
   return (
@@ -133,6 +135,7 @@ function Login() {
         <div className="form-group" style={{ position: 'relative' }}>
           <label htmlFor="password">Password:</label>
           <input
+            ref={passwordInputRef}
             type={showPassword ? 'text' : 'password'}
             id="password"
             placeholder="Enter password"
@@ -141,13 +144,14 @@ function Login() {
             required
             style={{
               padding: '10px',
-              width: '330px',
+              width: '100%',
               border: '1px solid #ccc',
               borderRadius: '5px',
+              boxSizing: 'border-box',
             }}
           />
           <FontAwesomeIcon
-            icon={showPassword ? faEyeSlash : faEye}
+            icon={showPassword ? faEye : faEyeSlash}
             onClick={toggleShowPassword}
             style={{
               position: 'absolute',

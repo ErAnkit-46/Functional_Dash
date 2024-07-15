@@ -1,6 +1,3 @@
-/* App.css or style.css */
-
-
 body {
   background-image: url('./background.jpg'); /* Ensure the correct path to your image */
   color: white; 
@@ -13,17 +10,19 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   backdrop-filter: blur(8px);
-  
+  background-color: rgba(255, 255, 255, 0.1); /* Adjust for better visibility */
 }
 
 h2 {
   text-align: center;
 }
 
-.form-group{
-  margin: 20px 0px;
+.form-group {
+  margin: 20px 0;
+  position: relative;
 }
-.flex{
+
+.flex {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -31,15 +30,12 @@ h2 {
 
 .check {
   display: flex;
-  justify-content: space-around;
-  /* border: 2px solid black; */
-  }
-
-
-.green{
-  color: #4CAF50;
+  align-items: center;
 }
 
+.green {
+  color: #4CAF50;
+}
 
 input[type="email"],
 input[type="password"] {
@@ -56,7 +52,7 @@ input[type="checkbox"] {
 
 button[type="submit"] {
   background-color: #4CAF50;
-  color: hsl(0, 100%, 99%);
+  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
