@@ -60,6 +60,7 @@ function Login() {
     const hasAlphabet = /[a-zA-Z]/;
     const hasCapitalLetter = /[A-Z]/;
     const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/;
+    const hasSpace = /\s/;
 
     if (password.length < 8) {
       return "Password must be at least 8 characters long.";
@@ -69,6 +70,9 @@ function Login() {
     }
     if (!hasAlphabet.test(password)) {
       return "Password must contain at least one alphabet.";
+    }
+    if (hasSpace.test(password)) {
+      return "Password should not contain spaces.";
     }
     if (!hasCapitalLetter.test(password)) {
       return "Password must contain at least one capital letter.";
@@ -147,7 +151,7 @@ function Login() {
             }}
           />
           <FontAwesomeIcon
-            icon={showPassword ? faEyeSlash : faEye}
+            icon={showPassword ? faEye :faEyeSlash}
             onClick={toggleShowPassword}
             style={{
               position: 'absolute',
