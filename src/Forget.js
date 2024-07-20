@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,8 +11,6 @@ const ForgetPasswordContainer = styled.div`
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 130px;
-  backdrop-filter: blur(5px);
 `;
 
 const FormHeading = styled.h2`
@@ -36,12 +35,10 @@ const Input = styled.input`
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  paddingRight: '40px'
 `;
 
 const PasswordInput = styled(Input)`
-  width: 95%;
-  paddingRight: '40px';
+  width: calc(100% - 40px);
 `;
 
 const FormButton = styled.button`
@@ -56,10 +53,9 @@ const FormButton = styled.button`
 const IconWrapper = styled.div`
   position: absolute;
   right: 10px;
-  top: 65%;
+  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #ccc; /* default color */
 `;
 
 const ForgetPasswordForm = () => {
@@ -68,13 +64,30 @@ const ForgetPasswordForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform forget password logic here (e.g., send email to reset password)
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
     console.log('Email:', email);
     console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+    // Handle password reset logic here
+    navigate('/'); // Navigate to home or another page after reset
   };
 
   const toggleShowPassword = () => {
@@ -96,7 +109,7 @@ const ForgetPasswordForm = () => {
             id="email"
             placeholder="Enter email address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             required
           />
         </Group>
@@ -105,13 +118,13 @@ const ForgetPasswordForm = () => {
           <PasswordInput
             type={showPassword ? 'text' : 'password'}
             id="password"
-            placeholder="Password"
+            placeholder="Enter new password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             required
           />
           <IconWrapper onClick={toggleShowPassword}>
-            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} style={{ color: '#000', cursor: 'pointer' }} />
+            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} style={{ color: '#000' }} />
           </IconWrapper>
         </Group>
         <Group>
@@ -119,13 +132,13 @@ const ForgetPasswordForm = () => {
           <PasswordInput
             type={showConfirmPassword ? 'text' : 'password'}
             id="confirmPassword"
-            placeholder="Confirm Password"
+            placeholder="Confirm password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleConfirmPasswordChange}
             required
           />
           <IconWrapper onClick={toggleShowConfirmPassword}>
-            <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} style={{ color: '#000', cursor: 'pointer' }} />
+            <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} style={{ color: '#000' }} />
           </IconWrapper>
         </Group>
         <FormButton type="submit">Reset Password</FormButton>

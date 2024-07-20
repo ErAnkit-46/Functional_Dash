@@ -15,7 +15,7 @@ const RegistrationForm = () => {
     e.preventDefault();
     // Check if password and confirm password match
     if (password !== confirmPassword) {
-      setError('Password do not match!');
+      setError('Passwords do not match!');
       return;
     }
     // Clear error message
@@ -67,7 +67,7 @@ const RegistrationForm = () => {
             htmlFor="username"
             style={{
               display: 'block',
-              marginBottom: '10px',
+              marginBottom: '5px',
             }}
           >
             Username:
@@ -89,14 +89,14 @@ const RegistrationForm = () => {
         </div>
         <div
           style={{
-            marginBottom: '20px'
+            marginBottom: '18px'
           }}
         >
           <label
             htmlFor="email"
             style={{
               display: 'block',
-              marginBottom: '10px',
+              marginBottom: '5px',
             }}
           >
             Email:
@@ -117,7 +117,7 @@ const RegistrationForm = () => {
         </div>
         <div
           style={{
-            marginBottom: '20px',
+            marginBottom: '16px',
             position: 'relative' // Add relative positioning
           }}
         >
@@ -133,6 +133,7 @@ const RegistrationForm = () => {
               padding: '10px',
               border: '1px solid #ccc',
               borderRadius: '5px',
+              marginBottom: '5px',
               paddingRight: '40px' // Add padding to the right
             }}
             required
@@ -143,7 +144,7 @@ const RegistrationForm = () => {
             style={{
               position: 'absolute',
               right: '10px',
-              top: '68%',
+              top: '63%',
               transform: 'translateY(-50%)',
               color: '#000000',
               cursor: 'pointer',
@@ -152,7 +153,7 @@ const RegistrationForm = () => {
         </div>
         <div
           style={{
-            marginBottom: '18px',
+            marginBottom: '16px',
             position: 'relative' // Add relative positioning
           }}
         >
@@ -160,7 +161,7 @@ const RegistrationForm = () => {
             htmlFor="confirmPassword"
             style={{
               display: 'block',
-              marginBottom: '8px',
+              marginBottom: '6px',
             }}
           >
             Confirm Password:
@@ -212,6 +213,7 @@ const RegistrationForm = () => {
             border: 'none',
             borderRadius: '5px',
             cursor: 'pointer',
+            marginTop: '20px',
           }}
         >
           Register
