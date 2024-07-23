@@ -2,7 +2,13 @@
 
 body {
   background-image: url('./background.jpg'); /* Ensure the correct path to your image */
+  background-size: cover; /* Ensures the image covers the container */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
   color: white;
+  width: 100%;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0;
 }
 
 .login-container {
