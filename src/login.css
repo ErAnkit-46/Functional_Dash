@@ -1,9 +1,8 @@
 /* App.css or style.css */
 
-
 body {
   background-image: url('./background.jpg'); /* Ensure the correct path to your image */
-  color: white; 
+  color: white;
 }
 
 .login-container {
@@ -13,17 +12,17 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   backdrop-filter: blur(8px);
-  
 }
 
 h2 {
   text-align: center;
 }
 
-.form-group{
-  margin: 20px 0px;
+.form-group {
+  margin: 20px 0;
 }
-.flex{
+
+.flex {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -33,19 +32,17 @@ h2 {
   display: flex;
   justify-content: space-around;
   /* border: 2px solid black; */
-  }
-
-
-.green{
-  color: #4CAF50;
 }
 
+.green {
+  color: #4CAF50;
+}
 
 input[type="email"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 

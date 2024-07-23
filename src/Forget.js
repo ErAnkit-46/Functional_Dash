@@ -6,27 +6,29 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const ForgetPasswordContainer = styled.div`
   max-width: 400px;
-  margin: 40px auto;
+  margin: 150px auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  height: 430px
 `;
 
 const FormHeading = styled.h2`
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 `;
 
 const Group = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   position: relative;
 `;
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 const Input = styled.input`
@@ -38,7 +40,7 @@ const Input = styled.input`
 `;
 
 const PasswordInput = styled(Input)`
-  width: calc(100% - 40px);
+  width: 95%;
 `;
 
 const FormButton = styled.button`
@@ -48,12 +50,13 @@ const FormButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 `;
 
 const IconWrapper = styled.div`
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 68%;
   transform: translateY(-50%);
   cursor: pointer;
 `;
@@ -74,16 +77,8 @@ const ForgetPasswordForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
     console.log('Email:', email);
     console.log('Password:', password);
     // Handle password reset logic here
@@ -124,7 +119,7 @@ const ForgetPasswordForm = () => {
             required
           />
           <IconWrapper onClick={toggleShowPassword}>
-            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} style={{ color: '#000' }} />
+            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} style={{ color: '#000', cursor: 'pointer' }} />
           </IconWrapper>
         </Group>
         <Group>
@@ -132,13 +127,13 @@ const ForgetPasswordForm = () => {
           <PasswordInput
             type={showConfirmPassword ? 'text' : 'password'}
             id="confirmPassword"
-            placeholder="Confirm password"
+            placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
           <IconWrapper onClick={toggleShowConfirmPassword}>
-            <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} style={{ color: '#000' }} />
+            <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} style={{ color: '#000', cursor: 'pointer' }} />
           </IconWrapper>
         </Group>
         <FormButton type="submit">Reset Password</FormButton>

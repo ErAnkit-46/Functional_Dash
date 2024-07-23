@@ -53,14 +53,14 @@ const RegistrationForm = () => {
         <h2
           style={{
             fontWeight: 'bold',
-            marginBottom: '20px'
+            marginBottom: '15px'
           }}
         >
           New Registration
         </h2>
         <div
           style={{
-            marginBottom: '20px'
+            marginBottom: '15px'
           }}
         >
           <label
@@ -89,7 +89,7 @@ const RegistrationForm = () => {
         </div>
         <div
           style={{
-            marginBottom: '18px'
+            marginBottom: '15px'
           }}
         >
           <label
@@ -213,7 +213,7 @@ const RegistrationForm = () => {
             border: 'none',
             borderRadius: '5px',
             cursor: 'pointer',
-            marginTop: '20px',
+            marginTop: '25px',
           }}
         >
           Register
